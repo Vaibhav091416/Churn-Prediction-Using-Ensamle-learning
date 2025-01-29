@@ -9,7 +9,7 @@
 <body>
     <div class="container mt-5">
         <h1>Churn Prediction</h1>
-        <form method="POST">
+        <form action="/predictdata" method="POST">
             {% for field, options in col_fields.items() %}
             <div class="mb-3">
                 <label class="form-label">{{ field }}</label>
@@ -32,7 +32,8 @@
             
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-        <h2>The prediction is {{result}}</h2>
+        <h2>The prediction is {{ans_st}}</h2>
+        <b></b>
     </div>
 </body>
 </html>
