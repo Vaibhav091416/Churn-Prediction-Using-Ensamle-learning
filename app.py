@@ -31,6 +31,7 @@ def predict():
             print("Form data recieved")
             data=pd.DataFrame([dk])
             print(data)
+            print(type(data))
             print("Form data converted to datframe")
             print('Predicting data')
             obj=PredictPipeline()
