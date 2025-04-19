@@ -2,6 +2,11 @@ from app import app
 import json
 import pandas as pd
 
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from app import app
 
 def test_home():
     resoponse=app.test_client().get('/')
@@ -31,4 +36,3 @@ def test_predict():
 
     assert response.status_code == 200
     assert b'The prediction is' in response.data
-
