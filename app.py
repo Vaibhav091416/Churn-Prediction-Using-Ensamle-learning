@@ -49,7 +49,7 @@ def predict():
             return render_template('index.html',col_fields=col_fields,num_fields=num_fields,ans_st="error")
 
 if __name__=='__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0",port=5000,debug=True)
         
 
 
