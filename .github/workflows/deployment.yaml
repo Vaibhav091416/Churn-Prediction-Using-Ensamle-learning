@@ -63,12 +63,11 @@ jobs:
               run: |
                   echo ${{secrets.AWS_SSH_KEY}}>ec2key.pem
                   chmod 400 ec2key.pem
-                  ssh -o StrictHostKeyChecking=no -i ec2key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "\
+                  ssh -o StrictHostKeyChecking=no -i ec2key.pem ${{ secrets.EC2_USER }}@${{ secrets.AWS_HOST }} "\
                   docker pull ${{ secrets.DOCKER_USERNAME }}/churnprediction-app:latest && \
                   docker stop churn-app || true && \
                   docker rm churn-app || true && \
                   docker run -d -p 5000:5000 --name churn-app ${{ secrets.DOCKER_USERNAME }}/churnprediction-app:latest"
-
             - name: Image Digest
               run: echo ${{ steps.build-and-publish.outputs.digest }}
 
