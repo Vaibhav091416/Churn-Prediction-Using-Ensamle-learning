@@ -25,8 +25,9 @@ def test_predict():
     for field in num_fields:
         test_data[field] = 50  # Use dummy numeric value
 
-    test_data=pd.DataFrame(test_data,index=[0])
-
+    print("Test dataframe: ")
+    print(test_data)
+    print("Passing test_df into /predict")
 
     response = response.post('/predictdata', data=test_data, follow_redirects=True)
 
