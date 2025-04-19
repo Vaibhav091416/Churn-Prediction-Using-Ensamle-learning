@@ -11,13 +11,13 @@ def test_home():
 def test_predict():
     response=app.test_client()
 
-    with open('../artifact/Unique_vals.json','r') as file:
+    with open('./artifact/Unique_vals.json','r') as file:
         data=json.load(file)
         col_fields = dict(zip(data.keys(), [value.split(',') for value in data.values()]))
-    with open('../artifact/num_col.json','r') as file:
+    with open('./artifact/num_col.json','r') as file:
         lis=json.load(file)
         num_fields=list(lis)
-        
+
     test_data=dict()
 
     for field in col_fields:
