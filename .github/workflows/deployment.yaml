@@ -29,6 +29,7 @@ jobs:
                 pip install flask
                 pip install pytest
                 pip install scikit-learn
+                pip install pandas
 
             - name: Run tests
               run: |
