@@ -61,7 +61,7 @@ jobs:
 
             - name: Deployment on EC2
               run: |
-                  echo ${{secrets.AWS_SSH_KEY}} > ec2key.pem
+                  echo "${{secrets.AWS_SSH_KEY}}" > ec2key.pem
                   chmod 400 ec2key.pem
                   ssh -o StrictHostKeyChecking=no -i ec2key.pem ${{ secrets.EC2_USER }}@${{ secrets.AWS_HOST }} "\
                   docker pull ${{ secrets.DOCKER_USERNAME }}/churnprediction-app:latest && \
