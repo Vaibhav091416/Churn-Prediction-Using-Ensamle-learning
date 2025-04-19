@@ -9,22 +9,24 @@ def test_home():
     assert resoponse.status_code==200
 
 def test_predict():
-
-    cat_filed=pd.read_csv('../artifacts/')
     response=app.test_client()
 
-    with open('./artifact/Unique_vals.json','r') as file:
+    with open('../artifact/Unique_vals.json','r') as file:
         data=json.load(file)
         col_fields = dict(zip(data.keys(), [value.split(',') for value in data.values()]))
-    with open('./artifact/num_col.json','r') as file:
+    with open('../artifact/num_col.json','r') as file:
         lis=json.load(file)
         num_fields=list(lis)
-    test_data=pd.DataFrame()
+
+    num_fields=list(lis)
+    test_data=dict()
+
     for field in col_fields:
         test_data[field] = col_fields[field][0]  # Choose first option as test input
     for field in num_fields:
         test_data[field] = 50  # Use dummy numeric value
-
+        
+    test_data=pd.DataFrame(test_data,index=[0])
 
 
     response = response.post('/predictdata', data=test_data, follow_redirects=True)
