@@ -17,15 +17,14 @@ def test_predict():
     with open('../artifact/num_col.json','r') as file:
         lis=json.load(file)
         num_fields=list(lis)
-
-    num_fields=list(lis)
+        
     test_data=dict()
 
     for field in col_fields:
         test_data[field] = col_fields[field][0]  # Choose first option as test input
     for field in num_fields:
         test_data[field] = 50  # Use dummy numeric value
-        
+
     test_data=pd.DataFrame(test_data,index=[0])
 
 
